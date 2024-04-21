@@ -1,9 +1,11 @@
-Pre-requisites
+**Pre-requisites**
 
 1) Create a zoo.cfg file inc ase you want to set up your own configuration.
 2) Change the data directory path in the conf file as per your data directory
 
-Deployment Steps:
+---------------------------------------------------------------------------------------
+
+**Deployment Steps:**
 
 Step 1: Create a docker compose file with settings and volumes defined in it.
         Refer ./zoo.cfg file respective directory

@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  zookeeper:
+    container_name: test-zookeeper
+    restart: always
+    image: zookeeper
+    volumes:
+      - ./zookeeper/zoo.cfg:/conf/zoo.cfg
+      - zookeeper-data:/data
+      - zookeeper-datalog:/datalog
+      - zookeeper-log:/logs
+    ports:
+      - "2181:2181"
+    networks:
+      - zookeeper-cluster
+
+networks:
+  zookeeper-cluster:
+    driver: bridge
+
+volumes:
+  zookeeper-data:
+  zookeeper-datalog:
+  zookeeper-log:

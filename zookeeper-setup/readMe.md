@@ -21,3 +21,11 @@ Step 4: Start Zookeper CLI
         bin/zkCli.sh
 
 From here you can run the respective zookeeper commands 
+
+
+---------------------------------------------------------------------------------
+
+**References**
+
+- https://hub.docker.com/_/zookeeper
+- https://zookeeper.apache.org/doc/r3.3.3/zookeeperStarted.html

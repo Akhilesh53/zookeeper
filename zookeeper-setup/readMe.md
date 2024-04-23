@@ -29,3 +29,6 @@ From here you can run the respective zookeeper commands
 
 - https://hub.docker.com/_/zookeeper
 - https://zookeeper.apache.org/doc/r3.3.3/zookeeperStarted.html
+- https://bikas-katwal.medium.com/zookeeper-introduction-designing-a-distributed-system-using-zookeeper-and-java-7f1b108e236e (Must Read)
+- https://www.udemy.com/course/apache-zookeeper-tutorial-from-scratch/?couponCode=NVDPRODIN35
+

@@ -69,5 +69,17 @@ func main() {
 
 	clusterInfo.AddLiveNode(constants.SAMPLE_NODE_1)
 	fmt.Println("Live nodes: ", clusterInfo.GetLiveNodes())
+
+	// if number of nodes under live nodes is greater than 1, then we will check the leader
+	if len(clusterInfo.GetLiveNodes()) > 1 {
+		leader, err := zookeeperService.ElectLeader()
+		if err != nil {
+			fmt.Println("Error while getting leader: ", err)
+			return
+		}
+		clusterInfo.SetMaster(leader)
+		fmt.Println("Leader: ", leader)
+	}
+
 	time.Sleep(100 * time.Second)
 }

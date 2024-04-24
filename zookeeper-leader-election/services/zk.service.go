@@ -3,6 +3,7 @@ package services
 import (
 	"errors"
 	"fmt"
+	"sort"
 	"time"
 	ct "zk/constants"
 
@@ -27,6 +28,7 @@ type ZookeeperService interface {
 	AddToLiveNode(node, data string) error
 	GetLiveNode() []string
 	SetMaster(node string) error
+	ElectLeader() (string, error)
 }
 
 type zkService struct {
@@ -221,4 +223,20 @@ func (z *zkService) AddToLiveNode(node, data string) error {
 func (z *zkService) GetLiveNode() []string {
 	nodes, _, _ := z.Children(ct.LIVE_NODES)
 	return nodes
+}
+
+func (z *zkService) ElectLeader() (string, error) {
+	// get all the children of live nodes
+	liveNodes, _, _ := z.Children(ct.LIVE_NODES)
+
+	// sort all the nodes
+	sort.Strings(liveNodes)
+
+	// return the nodes with smallest value
+	if len(liveNodes) > 0 {
+		if err := z.SetMaster(liveNodes[0]); err != nil {
+			return "", err
+		}
+	}
+	return liveNodes[0], nil
 }
